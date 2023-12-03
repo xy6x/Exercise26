@@ -19,15 +19,14 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Boolean addProducts(Product product) {
+    public void addProducts(Product product) {
 product.getCategoryID();
 List<Category> category =categoryRepository.findAll();
             if (category.toArray().equals(product.getCategoryID())) {
                productRepository.save(product);
-                return true;
+               productRepository.save(product);
             }
 
-        return false ;
     }
     public boolean updateProducts(String id ,Product product){
         Category category =categoryRepository.getById(product.getId());

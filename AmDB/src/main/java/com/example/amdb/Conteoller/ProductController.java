@@ -24,13 +24,8 @@ public class ProductController {
             String message =errors.getFieldError().getDefaultMessage();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
         }
-
-        boolean be =productService.addProducts(product);
-        if (be) {
+            productService.addProducts(product);
             return ResponseEntity.status(HttpStatus.OK).body("added product");
-
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("please enter number true");
 
     }
     @PutMapping("/put/{id}")

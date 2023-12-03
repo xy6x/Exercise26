@@ -17,8 +17,9 @@ public class MerchantStock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotEmpty(message = "please enter id")
     private Integer id ;
-    @NotEmpty(message = "please enter productID")
+    @Column(columnDefinition = "FOREIGN KEY (productID) REFERENCES Product(id)")
     private String productID;
+    @Column(columnDefinition = "FOREIGN KEY (merchantID) REFERENCES Merchant(id)")
     @NotEmpty(message = "please enter merchantID")
     private String merchantID;
     @NotNull
