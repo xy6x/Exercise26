@@ -19,7 +19,6 @@ public class CategoryController {
         return ResponseEntity.status(200).body(categoryService.getAllCategory());
     }
     @PostMapping("/add")
-
     public ResponseEntity addCategory(@RequestBody @Valid Category category, Errors errors) {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
@@ -30,7 +29,7 @@ public class CategoryController {
     }
     @PutMapping("/put/{id}")
 
-    public ResponseEntity updateCategory(@Positive Integer id, @RequestBody @Valid Category category, Errors errors) {
+    public ResponseEntity updateCategory(@PathVariable Integer id, @RequestBody @Valid Category category, Errors errors) {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             return ResponseEntity.status(400).body(message);
@@ -39,7 +38,7 @@ public class CategoryController {
         return ResponseEntity.status(200).body("Update category");
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteCategory(@Positive Integer id) {
+    public ResponseEntity deleteCategory(@PathVariable Integer id) {
         boolean isDelete = categoryService.deleteCategory(id);
         if (isDelete) {
             return ResponseEntity.status(200).body("Delete Category");

@@ -17,11 +17,11 @@ public class MerchantStock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotEmpty(message = "please enter id")
     private Integer id ;
-    @Column(columnDefinition = "FOREIGN KEY (productID) REFERENCES Product(id)")
-    private String productID;
-    @Column(columnDefinition = "FOREIGN KEY (merchantID) REFERENCES Merchant(id)")
+    @NotNull
+    private Integer productID;
+    @NotNull
     @NotEmpty(message = "please enter merchantID")
-    private String merchantID;
+    private Integer merchantID;
     @NotNull
     @Column(columnDefinition = " int  not null")
     private Integer stock;

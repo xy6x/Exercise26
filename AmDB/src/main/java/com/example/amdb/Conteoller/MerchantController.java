@@ -31,7 +31,7 @@ private final MerchantService merchantService;
     }
 
 @PutMapping("/put/{id}")
-    public ResponseEntity updateMerchant(@Positive Integer id, @RequestBody @Valid Merchant merchant, Errors errors) {
+    public ResponseEntity updateMerchant(@PathVariable Integer id, @RequestBody @Valid Merchant merchant, Errors errors) {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             return ResponseEntity.status(400).body(message);
@@ -40,7 +40,7 @@ private final MerchantService merchantService;
         return ResponseEntity.status(200).body("Update Merchant");
     }
 @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteMerchant(@Positive Integer id) {
+    public ResponseEntity deleteMerchant(@PathVariable Integer id) {
         boolean isDelete = merchantService.deleteMerchant(id);
         if (isDelete) {
             return ResponseEntity.status(200).body("Delete Merchant");

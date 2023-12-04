@@ -20,22 +20,34 @@ public class ProductService {
     }
 
     public void addProducts(Product product) {
-product.getCategoryID();
-List<Category> category =categoryRepository.findAll();
-            if (category.toArray().equals(product.getCategoryID())) {
-               productRepository.save(product);
-               productRepository.save(product);
+        for (int i = 0; i <categoryRepository.findAll().size() ; i++) {
+            if (product.getCategoryID()==categoryRepository.findAll().get(i).getId()) {
+            productRepository.save(product);
             }
+
+        }
 
     }
-    public boolean updateProducts(String id ,Product product){
-        Category category =categoryRepository.getById(product.getId());
-
-        if (categoryRepository.equals(product.getCategoryID().equals(id))) {
-                productRepository.save(product);
+    public Boolean updateProducts(Integer id ,Product product){
+      Product oldproduct = productRepository.getById(id);
+        for (int i = 0; i <categoryRepository.findAll().size() ; i++) {
+            if (product.getCategoryID() == categoryRepository.findAll().get(i).getId()) {
+                oldproduct.setName(product.getName());
+                oldproduct.setPrice(product.getPrice());
+                productRepository.save(oldproduct);
                 return true;
             }
+
+        }
         return false;
+    }
+    public Boolean deleteProducts(Integer id){
+        Product product =productRepository.getById(id);
+        if (product == null) {
+            return false;
+        }
+        productRepository.delete(product);
+        return true;
     }
 
 }

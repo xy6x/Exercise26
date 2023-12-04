@@ -22,9 +22,8 @@ public class Product {
     private String name;
     @NotNull(message = "please enter price")
     @Positive(message = "please enter number positive")
-    @Column(columnDefinition = " integer  not null")
+    @Column(columnDefinition = " int  not null")
     private Integer price;
- @Column(columnDefinition = " FOREIGN KEY (categoryID) REFERENCES Category(id)")
  @NotNull(message = "please enter categoryID")
     private Integer categoryID;
 }

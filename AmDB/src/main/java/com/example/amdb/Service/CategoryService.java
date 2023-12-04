@@ -13,6 +13,7 @@ import java.util.List;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     public List<Category> getAllCategory(){
+
         return categoryRepository.findAll();
     }
     public void addCategory(Category category){
